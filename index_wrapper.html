@@ -53,8 +53,15 @@
 			}
 		}
 		var clip = nTr.getAttribute('clip');
-		sOut += '<tr><td><a class="media" href="clips/' + clip + '"> </a> </td>';
-		sOut += '<td><a href="clips/' + clip + '">&lt; ';
+
+		// Insert HTML5 audio player directly
+		sOut += '<tr><td><audio controls preload="none" style="width:200px;">' +
+        		'<source src="clips/' + clip + '" type="audio/wav">' +
+        		'Your browser does not support the audio element.' +
+       			 '</audio></td>';
+
+		// Keep the citation link/text next to it
+		sOut += '<td><a href="clips/' + clip + '">&lt; '
 		for (idx = 0; idx < aData.length; ++idx) {
 			if ( colHeads[idx].className.indexOf("Citation") >= 0 ) {
 				sOut += aData[idx]+' ';
@@ -169,11 +176,8 @@
 
 			/* var clip = $(this).attr('clip'); */
 			/* $('#play').html('<a class="media" href="clips/' + clip + '">' + clip + '</a>'); */
-			$('a.media').media({
-				width : 100,
-				height : 20,
-				autoplay : true
-			});
+			
+
 		});
 	});
 
