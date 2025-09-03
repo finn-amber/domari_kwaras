@@ -54,11 +54,14 @@
 		}
 		var clip = nTr.getAttribute('clip');
 
-		// Insert HTML5 audio player directly
+		// force .mp3 instead of .wav
+		var mp3clip = clip.replace(/\.wav$/i, ".mp3");
+
 		sOut += '<tr><td><audio controls preload="none" style="width:200px;">' +
-        		'<source src="clips/' + clip + '" type="audio/wav">' +
+        		'<source src="clips/' + mp3clip + '" type="audio/mpeg">' +
         		'Your browser does not support the audio element.' +
-       			 '</audio></td>';
+        		'</audio></td>';
+
 
 		// Keep the citation link/text next to it
 		sOut += '<td><a href="clips/' + clip + '">&lt; '
